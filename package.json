@@ -1,0 +1,30 @@
+{
+  "name": "task-group",
+  "version": "0.0.1",
+  "description": "Node module to run a graph of tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/conradz/task-group.git"
+  },
+  "keywords": [
+    "task",
+    "tasks",
+    "dependencies",
+    "dependency",
+    "graph"
+  ],
+  "author": "Conrad Zimmerman",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  },
+  "dependencies": {
+    "async": "*"
+  }
+}
