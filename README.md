@@ -47,7 +47,7 @@ tasks.run(['file', ...], function(err) {
 
 ## Reference
 
-### TaskGroup()
+### `TaskGroup()`
 
 This is the main class to use to manage the tasks. It contains an object
 containing the task names mapped to their dependencies and actions. The
