@@ -14,7 +14,7 @@ that all dependencies are complete before calling the task action.
 
 ## Example
 
-Also see the tests in the `spec` directory.
+Also see the tests in the `test` directory.
 
 ```js
 var TaskGroup = require('task-group');
@@ -70,3 +70,6 @@ all the registered tasks. `callback` is a function that is called when all
 tasks are complete, with the first parameter being the error if an error
 occured, or `null`.
 
+## License
+
+MIT License. See the `LICENSE` file.
