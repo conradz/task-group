@@ -1,20 +1,12 @@
-# task-group
+task-group
+==========
 
-Node module to run a graph of tasks
+Node module to run a graph of tasks. This makes it super easy to manage groups
+of tasks that have dependencies, while running everything asynchronously and in
+parallel.
 
-This module manages a list of tasks and their dependencies. It will run tasks
-in parallel and will complete all of a tasks dependencies before running a
-task.
-
-A task is very similar to a Makefile task, except that it will run a plain JS
-function. As in Makefile tasks, a task can have zero or more dependencies that
-must be completed before the task can be run. A TaskGroup will run as many
-tasks as possible in parallel, including dependencies, but will always ensure
-that all dependencies are complete before calling the task action.
-
-## Example
-
-Also see the tests in the `test` directory.
+Example
+-------
 
 ```js
 var TaskGroup = require('task-group');
@@ -24,11 +16,12 @@ tasks.task('dir', function(done) {
     fs.mkdir('my-dir', done);
 });
 
+// The `file` task must have the `dir` task completed before it runs
 tasks.task('file', ['dir'], function(done) {
     fs.writeFile('my-dir/file', 'Test file', done);
 });
 
-// Runs `dir` task first, and then `file` task
+// Runs the `file` task, which depends on the `dir` task
 tasks.run('file', function(err) {
     // `err` contains the error if an error occurred in any of the tasks that
     // were run.
@@ -45,7 +38,8 @@ tasks.run(['file', ...], function(err) {
 });
 ```
 
-## Reference
+Reference
+---------
 
 ### `TaskGroup()`
 
@@ -70,6 +64,7 @@ all the registered tasks. `callback` is a function that is called when all
 tasks are complete, with the first parameter being the error if an error
 occured, or `null`.
 
-## License
+License
+-------
 
 MIT License. See the `LICENSE` file.
