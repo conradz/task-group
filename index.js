@@ -35,12 +35,16 @@ TaskGroup.prototype.task = function(name, dependencies, action) {
 };
 
 TaskGroup.prototype.run = function(tasks, callback) {
-    if (typeof tasks === 'function' || tasks == null) {
+    if (typeof tasks === 'function') {
         // Run all tasks if none are specified
         callback = tasks;
-        tasks = Object.keys(this.tasks);
-    } else if (!Array.isArray(tasks)) {
+        tasks = null;
+    }
+
+    if (typeof tasks === 'string') {
         tasks = [tasks];
+    } else if (!tasks) {
+        tasks = Object.keys(this.tasks);
     }
 
     var taskIndex = this.tasks;

@@ -67,7 +67,7 @@ describe('TaskGroup', function() {
             });
     });
 
-    it('should run all tasks', function(done) {
+    it('should run all tasks when task parameter is omitted', function(done) {
         var ran = [];
         new TaskGroup()
             .task('test1', function(done) {
@@ -79,6 +79,26 @@ describe('TaskGroup', function() {
                 done();
             })
             .run(function(e) {
+                expect(e).to.not.exist;
+                expect(ran).to.include('test1');
+                expect(ran).to.include('test2');
+                expect(ran.length).to.equal(2);
+                done();
+            });
+    });
+
+    it('should run all tasks when null task specified', function(done) {
+        var ran = [];
+        new TaskGroup()
+            .task('test1', function(done) {
+                ran.push('test1');
+                done();
+            })
+            .task('test2', function(done) {
+                ran.push('test2');
+                done();
+            })
+            .run(null, function(e) {
                 expect(e).to.not.exist;
                 expect(ran).to.include('test1');
                 expect(ran).to.include('test2');
