@@ -1,6 +1,6 @@
 {
   "name": "task-group",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node module to run a graph of tasks",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "async": "~ 0.1.22"
+    "async": "~0.2.5"
   },
   "devDependencies": {
     "mocha": "*",
