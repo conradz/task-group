@@ -9,43 +9,44 @@ Example
 -------
 
 ```js
-var TaskGroup = require('task-group');
+var taskGroup = require('task-group');
 
-var tasks = new TaskGroup();
-tasks.task('dir', function(done) {
-    fs.mkdir('my-dir', done);
-});
+taskGroup()
+    .task('dir', function(done) {
+        fs.mkdir('my-dir', done);
+    })
 
-// The `file` task must have the `dir` task completed before it runs
-tasks.task('file', ['dir'], function(done) {
-    fs.writeFile('my-dir/file', 'Test file', done);
-});
+    // The `file` task must have the `dir` task completed before it runs
+    .task('file', ['dir'], function(done) {
+        fs.writeFile('my-dir/file', 'Test file', done);
+    })
 
-// Runs the `file` task, which depends on the `dir` task
-tasks.run('file', function(err) {
-    // `err` contains the error if an error occurred in any of the tasks that
-    // were run.
-});
+    // Runs the `file` task, which depends on the `dir` task
+    .run('file', function(err) {
+        // `err` contains the error if an error occurred in any of the tasks that
+        // were run.
+    })
 
-// Runs all tasks
-tasks.run(function(err) {
+    // Runs all tasks
+    .run(function(err) {
 
-});
+    })
 
-// Run multiple tasks
-tasks.run(['file', ...], function(err) {
+    // Run multiple tasks
+    .run(['file', ...], function(err) {
 
-});
+    });
 ```
 
 Reference
 ---------
 
-### `TaskGroup()`
+### `taskGroup()`
 
-This is the main class to use to manage the tasks. It contains an object
-containing the task names mapped to their dependencies and actions. The
-`TaskGroup` constructor is the only export from the module.
+This returns a new task group, which has the `#task` and `#run` methods. The
+module exports this function directly.
+
+The returned object's methods can be chained for more concise code.
 
 ### `#task(name, [dependencies], [action])`
 
