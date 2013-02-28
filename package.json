@@ -1,6 +1,6 @@
 {
   "name": "task-group",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node module to run a graph of tasks",
   "main": "index.js",
   "scripts": {
